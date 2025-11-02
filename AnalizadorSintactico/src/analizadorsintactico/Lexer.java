@@ -1,4 +1,4 @@
-package analizadorlexico;
+package analizadorsintactico;
 
 import java.io.*;
 import java.util.*;
@@ -41,7 +41,7 @@ public class Lexer {
                 String str = extractString(text, i);
                 tokens.add(new Token(TokenType.LITERAL_CADENA, str));
                 i += str.length() + 2;
-            } else if (Character.isDigit(currentChar)) {
+            } else if (Character.isDigit(currentChar) || (currentChar == '-' && i + 1 < text.length() && Character.isDigit(text.charAt(i+1)))) {
                 String num = extractNumber(text, i);
                 tokens.add(new Token(TokenType.LITERAL_NUM, num));
                 i += num.length();
@@ -78,6 +78,7 @@ public class Lexer {
 
     private String extractNumber(String text, int startIndex) {
         int i = startIndex;
+        if (text.charAt(i) == '-') i++; // soporte negativo
         while (i < text.length() && (Character.isDigit(text.charAt(i)) || text.charAt(i) == '.')) i++;
         return text.substring(startIndex, i);
     }
@@ -195,5 +196,12 @@ public class Lexer {
 
         System.out.print(output.toString());
         return level;
+    }
+
+    // tokenizeFile() usa el contenido ya cargado en el constructor
+    public List<Token> tokenizeFile() {
+        List<Token> allTokens = processLine(contenido);
+        allTokens.add(new Token(TokenType.EOF, "EOF"));
+        return allTokens;
     }
 }

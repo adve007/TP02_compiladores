@@ -1,4 +1,4 @@
-package analizadorlexico;
+package analizadorsintactico;
 
 public class Token {
     private final TokenType type;
