@@ -64,10 +64,10 @@ java -cp src analizadorsintactico.AnalizadorSintactico src/fuente.txt
 ---
 ## Funcionamiento Interno
 
-1- `Lexer.java` analiza el archivo y genera una lista de tokens.
-2- `Parser.java` aplica la gramática JSON simplificada para validar la estructura.
-3- Si se detectan errores, el analizador utiliza métodos de sincronización (Panic Mode) para continuar con el análisis sin detenerse abruptamente.
-4- Finalmente, muestra si el archivo es válido o detalla los errores encontrados.
+1. `Lexer.java` analiza el archivo y genera una lista de tokens.
+2. `Parser.java` aplica la gramática JSON simplificada para validar la estructura.
+3. Si se detectan errores, el analizador utiliza métodos de sincronización (Panic Mode) para continuar con el análisis sin detenerse abruptamente.
+4. Finalmente, muestra si el archivo es válido o detalla los errores encontrados.
 
 ---
 ## Gramática Simplificada
