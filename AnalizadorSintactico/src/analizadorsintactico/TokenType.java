@@ -1,4 +1,4 @@
-package analizadorlexico;
+package analizadorsintactico;
 
 public enum TokenType {
     LITERAL_CADENA, LITERAL_NUM, PR_TRUE, PR_FALSE, PR_NULL,
